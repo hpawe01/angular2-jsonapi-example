@@ -26,6 +26,17 @@ export class AppComponent implements OnInit{
       .subscribe((items) => console.log('Example 3) All users including comments', items));
     this.datastore.findRecord(Post, '1')
       .subscribe((item) => console.log('Example 4) Specific post', item));
+    // Example from https://github.com/ghidoz/angular2-jsonapi#querying-records
+    this.datastore.findAll(User, {
+      // this line is not working
+      // page: { size: 10, number: 1 },
+      include: 'comments',
+    }).subscribe(
+      (document) => {
+        console.log('Example 5) All posts including comments (Meta)', document.getMeta()); // metadata
+        console.log('Example 5) All posts including comments (Models)', document.getModels()); // models
+      }
+    );
 
   }
 }
