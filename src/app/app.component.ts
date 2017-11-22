@@ -28,7 +28,6 @@ export class AppComponent implements OnInit{
       .subscribe((item) => console.log('Example 4) Specific post', item));
     // Example from https://github.com/ghidoz/angular2-jsonapi#querying-records
     this.datastore.findAll(Post, {
-      // this line is not working
       // page: { size: 10, number: 1 },
       include: 'comments',
     }).subscribe(
