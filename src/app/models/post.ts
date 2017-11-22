@@ -1,6 +1,7 @@
 import { JsonApiModelConfig, JsonApiModel, Attribute, HasMany, BelongsTo } from 'angular2-jsonapi';
 
 import { Comment } from './comment';
+import { User } from './user';
 
 @JsonApiModelConfig({
     type: 'posts'
@@ -13,9 +14,15 @@ export class Post extends JsonApiModel {
     @Attribute()
     content: string;
 
-    @Attribute({ serializedName: 'created-at' })
+    @Attribute()
     createdAt: Date;
+
+    @Attribute()
+    updatedAt: Date;
 
     @HasMany()
     comments: Comment[];
+
+    @BelongsTo()
+    author: User;
 }

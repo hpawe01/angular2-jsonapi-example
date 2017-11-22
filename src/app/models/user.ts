@@ -1,6 +1,7 @@
-import { JsonApiModelConfig, JsonApiModel, Attribute, HasMany, BelongsTo } from 'angular2-jsonapi';
+import { JsonApiModelConfig, JsonApiModel, Attribute, HasMany } from 'angular2-jsonapi';
 
 import { Comment } from './comment';
+import { Post } from './post';
 
 @JsonApiModelConfig({
     type: 'users'
@@ -9,12 +10,17 @@ export class User extends JsonApiModel {
 
     @Attribute()
     name: string;
-    // ...
+
+    @Attribute()
+    createdAt: Date;
+
+    @Attribute()
+    updatedAt: Date;
+
     @HasMany()
-    comment: Comment[];
-    @BelongsTo()
-    parent: User;
+    posts: Post[];
+
     @HasMany()
-    children: User[];
+    comments: Comment[];
 }
 
