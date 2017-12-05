@@ -21,9 +21,9 @@ export class AppComponent implements OnInit{
       })
       .subscribe((items) => console.log('Example 2) All comments including post', items));
     this.datastore.query(User, {
-        include: 'comments',
+        include: 'posts',
       })
-      .subscribe((items) => console.log('Example 3) All users including comments', items));
+      .subscribe((items) => console.log('Example 3) All users including posts', items));
     this.datastore.findRecord(Post, '1')
       .subscribe((item) => console.log('Example 4) Specific post', item));
     // Example from https://github.com/ghidoz/angular2-jsonapi#querying-records
